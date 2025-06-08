@@ -667,6 +667,54 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Initialize the Speed Risk Chart
+document.addEventListener('DOMContentLoaded', function() {
+    // Only create chart if element exists
+    if(document.getElementById('speedRiskChart')) {
+        const ctx = document.getElementById('speedRiskChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Low (<15 km/h)', 'Medium (15-25 km/h)', 'High (>25 km/h)'],
+                datasets: [{
+                    label: 'Crash Rate (%)',
+                    data: [9.1, 18.2, 72.7],
+                    backgroundColor: [
+                        'rgba(101, 163, 13, 0.7)',
+                        'rgba(217, 119, 6, 0.7)',
+                        'rgba(220, 38, 38, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgb(101, 163, 13)',
+                        'rgb(217, 119, 6)',
+                        'rgb(220, 38, 38)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Crash Rate (%)'
+                        }
+                    }
+                }
+            }
+        });
+    }
+});
+
 // Enhanced interactivity
 Chart.defaults.elements.arc.hoverOffset = 15;
 Chart.defaults.datasets.bar.maxBarThickness = 40;

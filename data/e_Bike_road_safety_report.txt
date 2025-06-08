@@ -1,0 +1,77 @@
+E-bike Safety Perception Report
+Executive Summary
+This report examines safety perceptions among e-bike cyclists based on a comprehensive survey study conducted in Taiwan with 220 participants. The research investigated psychological factors influencing e-bike road safety, including mental workload, user experience, and risk perception.
+Key Findings
+Mental Workload and Speed Relationship
+
+E-bike riders generally perceived the riding task as relatively easy (DALI score: 29.32/100)
+Mental workload increased significantly with riding speed
+High-speed cyclists (>25 km/h) experienced greater visual demands, attention requirements, and time pressure
+Male cyclists perceived higher temporal demands than female cyclists
+
+Risk Perception Patterns
+
+Low Anxiety, High Arousal: Average anxiety score was 2.3/10, while arousal was 8.2/10
+Cyclists with crash experience reported significantly higher anxiety levels than those without
+High-speed riders experienced more anxiety than medium-speed riders
+Strong positive correlation between mental workload (DALI) and anxiety levels
+
+Critical Safety Factors
+1. Speed as Primary Risk Factor
+
+High-speed riders (>25 km/h): 72.7% crash rate
+Medium-speed riders (15-25 km/h): 18.2% crash rate
+Low-speed riders (<15 km/h): 9.1% crash rate
+Modified e-bikes showed 20 times higher crash rates than regulation-compliant bikes
+
+2. User Experience Quality
+
+Pragmatic quality (utility and usability satisfaction) was the strongest predictor of crashes
+Cyclists with crash experience had lower satisfaction with bike functionality
+Product quality emerged as the most important factor for traffic safety
+
+Gender Differences
+
+Male cyclists: Tend to ride at higher speeds, perceive greater time pressure
+Female cyclists: Show higher satisfaction with bike attractiveness, prefer lower speeds
+Males represented 67.6% of high-speed riders vs. 32.4% females
+
+Safety Recommendations
+For Cyclists
+
+Self-monitoring systems: Mobile apps to report mental workload and anxiety before riding
+Speed awareness: Maintain speeds below 25 km/h for optimal safety
+Regular maintenance: Ensure proper bike functionality to improve pragmatic quality
+
+For Manufacturers
+
+Design focus: Prioritize utility and usability in product development
+Quality assurance: Strengthen product designs to meet functional needs
+Technology integration: Develop smartphone applications for cyclist feedback and improvement
+
+for Policymakers
+
+Infrastructure: Create separate lanes for e-bikes to reduce mixed traffic exposure
+Education: Implement tailored safety training based on individual risk profiles
+Enforcement: Strict prohibition of e-bike modifications that exceed legal speed limits
+Speed management: Consider dynamic speed limits based on traffic conditions
+
+Risk Profile Identification
+High-Risk Groups
+
+Cyclists habitually riding above 25 km/h
+Users of modified e-bikes
+Riders with low satisfaction regarding bike functionality
+Male cyclists in high-speed categories
+
+Protective Factors
+
+High pragmatic quality satisfaction
+Consistent riding below 25 km/h speed limit
+Regular bike maintenance and quality checks
+Self-awareness of mental workload and anxiety levels
+
+Conclusion
+The study reveals that e-bike safety perception is primarily influenced by speed behavior and product quality satisfaction. While riders generally find e-biking manageable, those who speed or have poor product experiences face significantly higher crash risks. A multi-faceted approach involving technology, education, and policy intervention is essential for improving e-bike road safety.
+
+Based on: Huang, F-H. (2022). Exploring the factors influencing e-bike road safety: A survey study based on the experiences of Taiwanese cyclists. International Journal of Industrial Ergonomics, 89, 103292.
