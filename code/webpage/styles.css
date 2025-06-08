@@ -1558,9 +1558,13 @@ section {
 
 .circular-progress {
     position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 20px auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 160px;
 }
 
 .circular-chart {
@@ -1708,5 +1712,122 @@ section {
     .gender-stats {
         flex-direction: column;
         gap: 15px;
+    }
+}
+
+/* Safety Perception Hero Section - Full Background */
+.safety-perception-hero {
+    position: relative;
+    min-height: 420px;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    background-image: url('../../images/recraft-street-without-lanes.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 40px 0 0 0;
+}
+.safety-perception-overlay {
+    background: rgba(30, 41, 59, 0.60); /* dark overlay for readability */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    min-height: 420px;
+}
+.safety-perception-content {
+    color: #fff;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    z-index: 2;
+    text-align: left;
+}
+.safety-perception-content h3,
+.safety-perception-content .section-subheading,
+.safety-rating-label,
+.infra-gap-label {
+    color: #fff;
+}
+.safety-rating-visual {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin: 30px 0 10px 0;
+    margin-left: 24px;
+}
+.safety-rating-number {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: 'Racing Sans One', sans-serif;
+}
+.safety-rating-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.safety-infra-gap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 0;
+}
+.safety-infra-gap .circle {
+    stroke: var(--accent) !important;
+}
+.safety-infra-gap .circular-chart text {
+    fill: var(--accent) !important;
+}
+.safety-infra-gap .infra-gap-label {
+    font-size: 1rem;
+    color: #fff;
+    max-width: 220px;
+}
+@media (max-width: 991px) {
+    .safety-perception-hero, .safety-perception-overlay {
+        min-height: 320px;
+    }
+    .safety-perception-content {
+        padding: 32px 10px;
+        max-width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .safety-perception-hero, .safety-perception-overlay {
+        min-height: 220px;
+    }
+    .safety-perception-content {
+        padding: 18px 2vw;
+    }
+}
+
+/* Survey Data Hero Background */
+.survey-hero-bg {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    background-image: url('../../images/stockimage.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+.survey-hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(44, 82, 130, 0.5));
+    z-index: 1;
+}
+@media (max-width: 768px) {
+    .survey-hero-bg {
+        height: 180px;
     }
 }

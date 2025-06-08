@@ -38,8 +38,8 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                   <li><a href="" class="nav-link">Survey Data</a></li>
-                    <li><a href="" class="nav-link">About this project</a></li>
+                   <li><a href="survey.html" class="nav-link">Survey Data</a></li>
+                    <li><a href="#about" class="nav-link">About this project</a></li>
                 </ul>
                 <!--ul>
                     <li><a href="#about" class="nav-link">About</a></li>
@@ -126,61 +126,30 @@
     <div class="section-header" data-aos="fade-up">
         <h2>Safety Perception</h2>
         <div class="underline"></div>
-        <p class="section-subheading">Many riders told us they feel unsafe, especially where bike lanes are missing or unclear. Our survey confirmed this: a large number of cyclists worry about traffic, road layout, and the lack of safe space.
-        </p>
     </div>
-
-    <div class="grid-container">
-        <!-- Key Safety Stats -->
-        <div class="stat-card highlight-card" data-aos="fade-right" data-aos-delay="100">
-            <div class="stat-header">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Safety Rating</h3>
-            </div>
-            <div class="stat-number">3.2<span class="stat-unit">/5</span></div>
-            <div class="stat-description">
-                <p>Average safety perception rating among cyclists</p>
-                <div class="stat-comparison">
-                    <div class="comparison-item">
-                        <span class="label">Local cyclists</span>
-                        <div class="rating-bar">
-                            <div class="rating-fill" style="width: 72%;">3.6</div>
-                        </div>
-                    </div>
-                    <div class="comparison-item">
-                        <span class="label">International cyclists</span>
-                        <div class="rating-bar">
-                            <div class="rating-fill" style="width: 54%;">2.7</div>
-                        </div>
-                    </div>
+    <div class="safety-perception-hero">
+        <div class="safety-perception-overlay">
+            <div class="safety-perception-content">
+                <h3>How safe do cyclists feel in Taipei?</h3>
+                <p class="section-subheading">Many riders told us they feel unsafe, especially where bike lanes are missing or unclear. Our survey confirmed this: a large number of cyclists worry about traffic, road layout, and the lack of safe space. The average safety perception rating among all surveyed cyclists was:</p>
+                <div class="safety-rating-visual">
+                    <div class="safety-rating-number">3.2<span class="stat-unit">/5</span></div>
+                    <div class="safety-rating-label">Average safety perception</div>
                 </div>
+                <div class="safety-infra-gap">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 36 36" width="160" height="160" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#eee" stroke-width="2"/>
+                            <path class="circle" stroke-dasharray="62, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--accent)" stroke-width="2"/>
+                            <text x="18" y="22" text-anchor="middle" font-size="13" fill="var(--accent)" font-family="'Racing Sans One', sans-serif">62%</text>
+                          </svg>
+                    </div>
+                    <div class="infra-gap-label">Cited "Not enough bike lanes" as their primary safety concern</div>
+                </div>
+                <a href="survey.html" class="btn primary-btn" style="margin-top:2rem;">Explore Full Survey Data</a>
             </div>
-        </div>
-
-
-
-        <!-- Infrastructure Gap -->
-        <div class="stat-card" data-aos="fade-right" data-aos-delay="300">
-            <div class="stat-header">
-                <i class="fas fa-road"></i>
-                <h3>Infrastructure Gap</h3>
-            </div>
-            <div class="stat-number">62<span class="stat-unit">%</span></div>
-            <div class="circular-progress">
-                <svg viewBox="0 0 36 36" class="circular-chart">
-                    <path class="circle-bg" d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                    <path class="circle" stroke-dasharray="62, 100" d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                </svg>
-                <div class="percentage-text">62%</div>
-            </div>
-            <p class="stat-description">Cited "Not enough bike lanes" as their primary safety concern</p>
         </div>
     </div>
-
     <div class="risk-factors-container" data-aos="fade-up" data-aos-delay="500">
         <h3 class="factors-title">Critical Safety Factors</h3>
         <div class="factors-grid">
@@ -263,101 +232,10 @@
         <!-- Survey Data Section -->
         <section id="data" class="data-section">
             <div class="section-header" data-aos="fade-up">
-                <h2>Survey Data Visualization</h2>
+                <h2>Survey Data</h2>
                 <div class="underline"></div>
-                <p class="section-subheading">Interactive data representations from our comprehensive cycling survey</p>
-            </div>
-
-            <div class="chart-tabs">
-                <div class="tab-nav">
-                    <button class="tab-btn active" data-tab="usage">Usage Patterns</button>
-                    <button class="tab-btn" data-tab="safety">Safety &amp; Concerns</button>
-                    <button class="tab-btn" data-tab="improvements">Improvements</button>
-                    <button class="tab-btn" data-tab="demographics">Demographics</button>
-                </div>
-                
-                <div class="tab-content">
-                    <!-- Usage Patterns Tab -->
-                    <div class="tab-pane active" id="usage-tab">
-                        <div class="chart-container">
-                            <div class="chart-card" data-aos="fade-up">
-                                <h3>How often do people ride bikes in Taipei?</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="frequencyChart"></canvas>
-                                </div>
-                            </div>
-
-                            <div class="chart-card" data-aos="fade-up" data-aos-delay="200">
-                                <h3>Main reasons for riding a bicycle</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="reasonsChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Safety Tab -->
-                    <div class="tab-pane" id="safety-tab">
-                        <div class="chart-container">
-                            <div class="chart-card" data-aos="fade-up">
-                                <h3>Safety perception while cycling in Taipei</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="safetyChart"></canvas>
-                                </div>
-                            </div>
-
-                            <div class="chart-card" data-aos="fade-up" data-aos-delay="200">
-                                <h3>Biggest concerns when cycling</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="concernsChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Improvements Tab -->
-                    <div class="tab-pane" id="improvements-tab">
-                        <div class="chart-container">
-                            <div class="chart-card" data-aos="fade-up">
-                                <h3>Suggested improvements for cycling safety</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="improvementsChart"></canvas>
-                                </div>
-                            </div>
-
-                            <div class="chart-card" data-aos="fade-up" data-aos-delay="200">
-                                <h3>Would use a safety navigation app?</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="appUsageChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Demographics Tab -->
-                    <div class="tab-pane" id="demographics-tab">
-                        <div class="demographics-container">
-                            <div class="chart-card" data-aos="fade-up">
-                                <h3>Age Groups</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="ageChart"></canvas>
-                                </div>
-                            </div>
-                            <div class="chart-card" data-aos="fade-up" data-aos-delay="100">
-                                <h3>Gender</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="genderChart"></canvas>
-                                </div>
-                            </div>
-                            <div class="chart-card" data-aos="fade-up" data-aos-delay="200">
-                                <h3>Origin</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="originChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <p class="section-subheading">Explore all interactive data visualizations and detailed survey results on a dedicated page.</p>
+                <a href="survey.html" class="btn primary-btn" style="margin-top:2rem;">Go to Survey Data</a>
             </div>
         </section>
 

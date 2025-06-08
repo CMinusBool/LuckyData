@@ -328,6 +328,9 @@ const colors = {
     danger: '#dc2626'
 };
 
+// Store chart instances by canvas ID
+const chartInstances = {};
+
 // Common chart options with enhanced styling
 const chartOptions = {
     responsive: true,
@@ -342,7 +345,9 @@ const chartOptions = {
                     family: "'Montserrat', sans-serif",
                     size: 12
                 }
-            }
+            },
+            // Disable legend click toggling
+            onClick: function() { return; }
         },
         tooltip: {
             backgroundColor: 'rgba(255, 255, 255, 0.9)',
@@ -387,7 +392,11 @@ function countOccurrences(arr) {
 // Enhanced bar chart with animations and better styling
 function createBarChart(canvasId, labels, data, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
-    return new Chart(ctx, {
+    // Destroy previous chart if exists
+    if (chartInstances[canvasId]) {
+        chartInstances[canvasId].destroy();
+    }
+    chartInstances[canvasId] = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
@@ -445,7 +454,10 @@ function createBarChart(canvasId, labels, data, label) {
 // Enhanced pie chart with better visuals
 function createPieChart(canvasId, labels, data, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
-    return new Chart(ctx, {
+    if (chartInstances[canvasId]) {
+        chartInstances[canvasId].destroy();
+    }
+    chartInstances[canvasId] = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: labels,
@@ -477,7 +489,10 @@ function createPieChart(canvasId, labels, data, label) {
 // Enhanced doughnut chart
 function createDoughnutChart(canvasId, labels, data, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
-    return new Chart(ctx, {
+    if (chartInstances[canvasId]) {
+        chartInstances[canvasId].destroy();
+    }
+    chartInstances[canvasId] = new Chart(ctx, {
         type: 'doughnut',
         data: {
             labels: labels,
@@ -506,7 +521,10 @@ function createDoughnutChart(canvasId, labels, data, label) {
 // Radar chart function (kept for potential future use)
 function createRadarChart(canvasId, labels, data, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
-    return new Chart(ctx, {
+    if (chartInstances[canvasId]) {
+        chartInstances[canvasId].destroy();
+    }
+    chartInstances[canvasId] = new Chart(ctx, {
         type: 'radar',
         data: {
             labels: labels,
@@ -525,142 +543,140 @@ function createRadarChart(canvasId, labels, data, label) {
 }
 
 // Process data for each chart
+function loadCharts(tabId = null) {
+    // If the tab system is active, only process charts in the active tab
+    const container = tabId ? document.getElementById(tabId) : document;
+
+    // 1. Frequency chart (bar)
+    if (document.getElementById('frequencyChart')) {
+        const frequencyData = surveyData.map(d => d.frequency);
+        const frequencyCounts = countOccurrences(frequencyData);
+        createBarChart(
+            'frequencyChart',
+            Object.keys(frequencyCounts),
+            Object.values(frequencyCounts),
+            'Number of respondents'
+        );
+    }
+
+    // 2. Reasons chart (pie)
+    if (document.getElementById('reasonsChart')) {
+        const reasonsData = surveyData.map(d => d.reason);
+        const reasonsCounts = countOccurrences(reasonsData);
+        createPieChart(
+            'reasonsChart',
+            Object.keys(reasonsCounts),
+            Object.values(reasonsCounts),
+            'Reasons for riding'
+        );
+    }
+
+    // 3. Safety rating chart (bar)
+    if (document.getElementById('safetyChart')) {
+        const safetyData = surveyData.map(d => d.safetyRating);
+        const safetyCounts = countOccurrences(safetyData);
+        const safetyLabels = ['1 (Not safe)', '2', '3', '4', '5 (Very safe)'];
+        const safetyValues = safetyLabels.map(label => 
+            safetyCounts[label.charAt(0)] || 0
+        );
+        createBarChart(
+            'safetyChart',
+            safetyLabels,
+            safetyValues,
+            'Safety perception (1-5 scale)'
+        );
+    }
+
+    // 4. Concerns chart (pie)
+    if (document.getElementById('concernsChart')) {
+        const concernsData = surveyData.map(d => d.concerns);
+        const concernsCounts = countOccurrences(concernsData);
+        createPieChart(
+            'concernsChart',
+            Object.keys(concernsCounts),
+            Object.values(concernsCounts),
+            'Biggest concerns'
+        );
+    }
+
+    // 5. Improvements chart (bar)
+    if (document.getElementById('improvementsChart')) {
+        const improvementsData = surveyData.map(d => d.improvement);
+        const improvementsCounts = countOccurrences(improvementsData);
+        createBarChart(
+            'improvementsChart',
+            Object.keys(improvementsCounts),
+            Object.values(improvementsCounts),
+            'Suggested improvements'
+        );
+    }
+
+    // 6. App usage chart (doughnut)
+    if (document.getElementById('appUsageChart')) {
+        const appUsageData = surveyData.map(d => d.useApp);
+        const appUsageCounts = countOccurrences(appUsageData);
+        createDoughnutChart(
+            'appUsageChart',
+            Object.keys(appUsageCounts),
+            Object.values(appUsageCounts),
+            'Would use a safety navigation app'
+        );
+    }
+
+    // 7. Age chart (doughnut)
+    if (document.getElementById('ageChart')) {
+        const ageData = surveyData.map(d => d.age);
+        const ageCounts = countOccurrences(ageData);
+        createDoughnutChart(
+            'ageChart',
+            Object.keys(ageCounts),
+            Object.values(ageCounts),
+            'Age groups'
+        );
+    }
+
+    // 8. Gender chart (pie)
+    if (document.getElementById('genderChart')) {
+        const genderData = surveyData.map(d => d.gender);
+        const genderCounts = countOccurrences(genderData);
+        createPieChart(
+            'genderChart',
+            Object.keys(genderCounts),
+            Object.values(genderCounts),
+            'Gender distribution'
+        );
+    }
+
+    // 9. Origin chart (doughnut)
+    if (document.getElementById('originChart')) {
+        const originData = surveyData.map(d => d.origin);
+        const originCounts = countOccurrences(originData);
+        createDoughnutChart(
+            'originChart',
+            Object.keys(originCounts),
+            Object.values(originCounts),
+            'Origin of respondents'
+        );
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Loading animation for charts
-    const loadCharts = (tabId = null) => {
-        // If the tab system is active, only process charts in the active tab
-        const container = tabId ? document.getElementById(tabId) : document;
-        
-        // 1. Frequency chart (bar)
-        if (container.contains(document.getElementById('frequencyChart'))) {
-            const frequencyData = surveyData.map(d => d.frequency);
-            const frequencyCounts = countOccurrences(frequencyData);
-            createBarChart(
-                'frequencyChart',
-                Object.keys(frequencyCounts),
-                Object.values(frequencyCounts),
-                'Number of respondents'
-            );
-        }
-
-        // 2. Reasons chart (pie)
-        if (container.contains(document.getElementById('reasonsChart'))) {
-            const reasonsData = surveyData.map(d => d.reason);
-            const reasonsCounts = countOccurrences(reasonsData);
-            createPieChart(
-                'reasonsChart',
-                Object.keys(reasonsCounts),
-                Object.values(reasonsCounts),
-                'Reasons for riding'
-            );
-        }
-
-        // 3. Safety rating chart (bar)
-        if (container.contains(document.getElementById('safetyChart'))) {
-            const safetyData = surveyData.map(d => d.safetyRating);
-            const safetyCounts = countOccurrences(safetyData);
-            const safetyLabels = ['1 (Not safe)', '2', '3', '4', '5 (Very safe)'];
-            const safetyValues = safetyLabels.map(label => 
-                safetyCounts[label.charAt(0)] || 0
-            );
-            createBarChart(
-                'safetyChart',
-                safetyLabels,
-                safetyValues,
-                'Safety perception (1-5 scale)'
-            );
-        }
-
-        // 4. Concerns chart (pie)
-        if (container.contains(document.getElementById('concernsChart'))) {
-            const concernsData = surveyData.map(d => d.concerns);
-            const concernsCounts = countOccurrences(concernsData);
-            createPieChart(
-                'concernsChart',
-                Object.keys(concernsCounts),
-                Object.values(concernsCounts),
-                'Biggest concerns'
-            );
-        }
-
-        // 5. Improvements chart (bar)
-        if (container.contains(document.getElementById('improvementsChart'))) {
-            const improvementsData = surveyData.map(d => d.improvement);
-            const improvementsCounts = countOccurrences(improvementsData);
-            createBarChart(
-                'improvementsChart',
-                Object.keys(improvementsCounts),
-                Object.values(improvementsCounts),
-                'Suggested improvements'
-            );
-        }
-
-        // 6. App usage chart (doughnut)
-        if (container.contains(document.getElementById('appUsageChart'))) {
-            const appUsageData = surveyData.map(d => d.useApp);
-            const appUsageCounts = countOccurrences(appUsageData);
-            createDoughnutChart(
-                'appUsageChart',
-                Object.keys(appUsageCounts),
-                Object.values(appUsageCounts),
-                'Would use a safety navigation app'
-            );
-        }
-
-        // 7. Age chart (doughnut)
-        if (container.contains(document.getElementById('ageChart'))) {
-            const ageData = surveyData.map(d => d.age);
-            const ageCounts = countOccurrences(ageData);
-            createDoughnutChart(
-                'ageChart',
-                Object.keys(ageCounts),
-                Object.values(ageCounts),
-                'Age groups'
-            );
-        }
-
-        // 8. Gender chart (pie)
-        if (container.contains(document.getElementById('genderChart'))) {
-            const genderData = surveyData.map(d => d.gender);
-            const genderCounts = countOccurrences(genderData);
-            createPieChart(
-                'genderChart',
-                Object.keys(genderCounts),
-                Object.values(genderCounts),
-                'Gender distribution'
-            );
-        }
-
-        // 9. Origin chart (doughnut)
-        if (container.contains(document.getElementById('originChart'))) {
-            const originData = surveyData.map(d => d.origin);
-            const originCounts = countOccurrences(originData);
-            createDoughnutChart(
-                'originChart',
-                Object.keys(originCounts),
-                Object.values(originCounts),
-                'Origin of respondents'
-            );
-        }
-    };
-    
-    // Initialize charts
+    // Always render all charts if their canvas exists
     setTimeout(() => {
-        // Render charts in the active tab
-        const activeTab = document.querySelector('.tab-pane.active');
-        if (activeTab) {
-            loadCharts(activeTab.id);
-        } else {
-            loadCharts();
-        }
+        loadCharts();
     }, 500);
-    
-    // Tab click event handling
+
+    // Tab click event handling (for tabbed charts)
     const tabButtons = document.querySelectorAll('.tab-btn');
     if (tabButtons.length) {
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const tabId = `${button.getAttribute('data-tab')}-tab`;
+                // Hide all tab panes
+                document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+                // Show the selected tab pane
+                document.getElementById(tabId).classList.add('active');
+                // Optionally, re-render charts in the new tab
                 loadCharts(tabId);
             });
         });
