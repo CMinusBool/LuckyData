@@ -38,98 +38,40 @@
         <div class="survey-hero-overlay"></div>
     </div>
     <main>
+        <!-- About this project -->
         <section class="data-section">
             <div class="section-header" data-aos="fade-up">
-                <h2>Survey Data Visualization</h2>
+                <h2>About this project</h2>
+                <div class="underline"></div>
+                <p class="section-subheading">This project was developed as part of a research seminar Data-informed Design Thinking, supervised by Ching-I Chen, in the spring semester 2025 at National Taipei University of Technology.
+</p>
+            </div>
+        </section>
+
+        <!-- Methods -->
+        <section class="data-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Methods</h2>
+                <div class="underline"></div>
+                <p class="section-subheading">To explore the current state of bicycle infrastructure and perceptions of cycling safety in Taipei, we employed a mixed-methods approach combining data analysis, visualization, and user input.
+               <br>
+                First, we obtained spatial data on existing bike lanes from the City Science Lab. Initial visualizations were created using Kepler.gl to identify patterns and gaps in the bike lane network. To gain a deeper understanding of cyclists' experiences and perceptions, we conducted a survey titled <em>"Exploring the Impact of Missing Bike Lanes on Urban Mobility and Safety"</em> using Google Forms. The survey results provided valuable insights into how the absence of bike lanes affects the feeling of safety and overall mobility for cyclists in Taipei.
+                <br>
+                Building on these findings, along with additional independent research, we developed the content presented on this website. The first version of the site was generated using the AI-powered development tool Cursor and then refined and edited by our team.
+                </p>
+            </div>
+        </section>
+
+        <!-- Credits -->
+        <section class="data-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Credits</h2>
                 <div class="underline"></div>
                 <p class="section-subheading">Interactive data representations from our comprehensive cycling survey</p>
             </div>
-            <div class="chart-tabs">
-                <div class="tab-nav">
-                    <button class="tab-btn active" data-tab="usage">Usage Patterns</button>
-                    <button class="tab-btn" data-tab="safety">Safety &amp; Concerns</button>
-                    <button class="tab-btn" data-tab="improvements">Improvements</button>
-                    <button class="tab-btn" data-tab="demographics">Demographics</button>
-                </div>
-                <div class="tab-content">
-                    <!-- Usage Patterns Tab -->
-                    <div class="tab-pane active" id="usage-tab">
-                        <div class="chart-container">
-                            <div class="chart-card" data-aos="fade-up">
-                                <h3>How often do people ride bikes in Taipei?</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="frequencyChart"></canvas>
-                                </div>
-                            </div>
-                            <div class="chart-card" data-aos="fade-up" data-aos-delay="200">
-                                <h3>Main reasons for riding a bicycle</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="reasonsChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Safety Tab -->
-                    <div class="tab-pane" id="safety-tab">
-                        <div class="chart-container">
-                            <div class="chart-card" data-aos="fade-up">
-                                <h3>Safety perception while cycling in Taipei</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="safetyChart"></canvas>
-                                </div>
-                            </div>
-                            <div class="chart-card" data-aos="fade-up" data-aos-delay="200">
-                                <h3>Biggest concerns when cycling</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="concernsChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Improvements Tab -->
-                    <div class="tab-pane" id="improvements-tab">
-                        <div class="chart-container">
-                            <div class="chart-card" data-aos="fade-up">
-                                <h3>Suggested improvements for cycling safety</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="improvementsChart"></canvas>
-                                </div>
-                            </div>
-                            <div class="chart-card" data-aos="fade-up" data-aos-delay="200">
-                                <h3>Would use a safety navigation app?</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="appUsageChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Demographics Tab -->
-                    <div class="tab-pane" id="demographics-tab">
-                        <div class="demographics-container">
-                            <div class="chart-card" data-aos="fade-up">
-                                <h3>Age Groups</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="ageChart"></canvas>
-                                </div>
-                            </div>
-                            <div class="chart-card" data-aos="fade-up" data-aos-delay="100">
-                                <h3>Gender</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="genderChart"></canvas>
-                                </div>
-                            </div>
-                            <div class="chart-card" data-aos="fade-up" data-aos-delay="200">
-                                <h3>Origin</h3>
-                                <div class="chart-wrapper">
-                                    <canvas id="originChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
+
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-column">
