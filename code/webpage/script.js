@@ -731,6 +731,158 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+ // Initialize AOS animation library
+ document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+    });
+    
+    // Loading screen animation
+    setTimeout(function() {
+        document.querySelector('.loading-screen').classList.add('loaded');
+        document.body.classList.add('loaded');
+    }, 1500);
+    
+    // Mobile navigation toggle
+    const mobileToggle = document.querySelector('.mobile-nav-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    
+    mobileToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        mainNav.classList.toggle('active');
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Close mobile menu if open
+            mainNav.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+    // Tabs functionality
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-pane');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Show corresponding content
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+    });
+    
+    // Header scroll effect
+    const header = document.querySelector('.site-header');
+    let lastScrollY = 0;
+    
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        
+        // Add shadow and background when scrolled
+        if (scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        
+        // Hide/show header on scroll direction
+        if (scrollY > lastScrollY && scrollY > 200) {
+            header.classList.add('hidden');
+        } else {
+            header.classList.remove('hidden');
+        }
+        
+        lastScrollY = scrollY;
+    });
+
+    // Problem slider functionality
+    const slider = document.querySelector('.problem-slider');
+    if (slider) {
+        const slides = slider.querySelectorAll('.problem-slide');
+        const nextBtn = document.querySelector('.slider-btn.next');
+        const prevBtn = document.querySelector('.slider-btn.prev');
+        const dotsContainer = document.querySelector('.slider-dots');
+        let currentSlide = 0;
+        let slideInterval;
+
+        // Create dots
+        slides.forEach((slide, index) => {
+            const dot = document.createElement('button');
+            dot.classList.add('slider-dot');
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                resetInterval();
+            });
+            dotsContainer.appendChild(dot);
+        });
+        
+        const dots = dotsContainer.querySelectorAll('.slider-dot');
+
+        function showSlide(n) {
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev', 'next');
+                
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else if (index === (currentSlide - 1 + slides.length) % slides.length) {
+                    slide.classList.add('prev');
+                } else if (index === (currentSlide + 1) % slides.length) {
+                    slide.classList.add('next');
+                }
+            });
+
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        }
+
+        nextBtn.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+            resetInterval();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+            resetInterval();
+        });
+        
+        // Auto-play functionality
+        function startInterval() {
+            slideInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 7000); // Change slide every 6 seconds
+        }
+        
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+
+        // Initial setup
+        showSlide(0);
+        startInterval();
+    }
+});
+
 // Enhanced interactivity
 Chart.defaults.elements.arc.hoverOffset = 15;
 Chart.defaults.datasets.bar.maxBarThickness = 40;

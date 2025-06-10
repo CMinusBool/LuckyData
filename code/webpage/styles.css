@@ -1787,3 +1787,143 @@ section {
   font-size: 0.9rem;
   white-space: nowrap;
 }
+
+/* Common Problems Section - Modern Slider */
+.common-problems-section {
+    background-color: var(--bg);
+}
+
+.problem-slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 60px; /* Add padding for prev/next buttons */
+}
+
+.problem-slider {
+    position: relative;
+    width: 100%;
+    height: 600px; /* A fixed height is better for this effect */
+    perspective: 1500px;
+    transform-style: preserve-3d;
+}
+
+.problem-slide {
+    position: absolute;
+    top: 10%;
+    width: 50%; /* Each slide is smaller than the container */
+    height: 80%;
+    left: 25%; /* Center it initially */
+    transition: transform 0.6s ease-in-out, opacity 0.6s, left 0.6s, z-index 0s 0.3s;
+    -webkit-box-reflect: below 10px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(255,255,255,0.15)));
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+}
+
+.problem-slide.active {
+    transform: translateZ(0px) rotateY(0deg);
+    opacity: 1;
+    z-index: 10;
+}
+
+.problem-slide.prev {
+    transform: translateZ(-300px) rotateY(35deg);
+    left: -5%;
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.problem-slide.next {
+    transform: translateZ(-300px) rotateY(-35deg);
+    left: 55%;
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.problem-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover fits the frame better */
+}
+
+.problem-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    color: white;
+    padding: 60px 30px 30px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.5s ease 0.2s;
+}
+
+.problem-slide.active .problem-caption {
+    transform: translateY(0);
+}
+
+.problem-caption h4 {
+    color: var(--accent);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    color: var(--primary);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.slider-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn.prev {
+    left: 0;
+}
+
+.slider-btn.next {
+    right: 0;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: -50px; /* Position below the slider reflection */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+    background-color: var(--primary);
+    transform: scale(1.2);
+}
