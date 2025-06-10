@@ -814,12 +814,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Problem slider functionality
-    const slider = document.querySelector('.problem-slider');
-    if (slider) {
+    const sliderContainer = document.querySelector('.problem-slider-container');
+    if (sliderContainer) {
+        const slider = sliderContainer.querySelector('.problem-slider');
         const slides = slider.querySelectorAll('.problem-slide');
-        const nextBtn = document.querySelector('.slider-btn.next');
-        const prevBtn = document.querySelector('.slider-btn.prev');
-        const dotsContainer = document.querySelector('.slider-dots');
+        const nextBtn = sliderContainer.querySelector('.slider-btn.next');
+        const prevBtn = sliderContainer.querySelector('.slider-btn.prev');
+        const dotsContainer = sliderContainer.querySelector('.slider-dots');
         let currentSlide = 0;
         let slideInterval;
 
@@ -855,6 +856,23 @@ document.addEventListener('DOMContentLoaded', function() {
             dots[currentSlide].classList.add('active');
         }
 
+        function stopInterval() {
+            clearInterval(slideInterval);
+        }
+
+        // Auto-play functionality
+        function startInterval() {
+            stopInterval(); // Prevent multiple intervals
+            slideInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 7000); // Change slide every 7 seconds
+        }
+
+        function resetInterval() {
+            stopInterval();
+            startInterval();
+        }
+
         nextBtn.addEventListener('click', () => {
             showSlide(currentSlide + 1);
             resetInterval();
@@ -865,21 +883,21 @@ document.addEventListener('DOMContentLoaded', function() {
             resetInterval();
         });
         
-        // Auto-play functionality
-        function startInterval() {
-            slideInterval = setInterval(() => {
-                showSlide(currentSlide + 1);
-            }, 7000); // Change slide every 6 seconds
-        }
-        
-        function resetInterval() {
-            clearInterval(slideInterval);
-            startInterval();
-        }
-
-        // Initial setup
+        // Initial setup - show first slide, but don't start interval yet.
         showSlide(0);
-        startInterval();
+
+        // Intersection Observer to start/stop slider when in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startInterval();
+                } else {
+                    stopInterval();
+                }
+            });
+        }, { threshold: 0.5 }); // Start when 50% of element is visible
+
+        observer.observe(sliderContainer);
     }
 });
 
