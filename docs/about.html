@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Data – Cyclists in Taipei</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <a href="index.html" class="logo-link">
+                    <span>Cyclists in Taipei</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                   <li><a href="survey.html" class="nav-link active">Survey Data</a></li>
+                    <li><a href="about.html" class="nav-link">About this project</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <div class="survey-hero-bg">
+        <div class="survey-hero-overlay"></div>
+    </div>
+    <main>
+        <!-- About this project -->
+        <section class="data-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>About this project</h2>
+                <div class="underline"></div>
+                <p class="section-subheading">This project was developed as part of a research seminar Data-informed Design Thinking, supervised by Ching-I Chen, in the spring semester 2025 at National Taipei University of Technology.
+</p>
+            </div>
+        </section>
+
+        <!-- Methods -->
+        <section class="data-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Methods</h2>
+                <div class="underline"></div>
+                <p class="section-subheading">To explore the current state of bicycle infrastructure and perceptions of cycling safety in Taipei, we employed a mixed-methods approach combining data analysis, visualization, and user input.
+                <br>
+                First, we obtained spatial data on existing bike lanes from the City Science Lab. Initial visualizations were created using Kepler.gl to identify patterns and gaps in the bike lane network. To gain a deeper understanding of cyclists' experiences and perceptions, we conducted a survey titled <em>"Exploring the Impact of Missing Bike Lanes on Urban Mobility and Safety"</em> using Google Forms. The survey results provided valuable insights into how the absence of bike lanes affects the feeling of safety and overall mobility for cyclists in Taipei.
+                <br>
+                Building on these findings, along with additional independent research, we developed the content presented on this website. The first version of the site was generated using the AI-powered development tool Cursor and then refined and edited by our team.
+                </p>
+            </div>
+        </section>
+
+        <!-- Credits -->
+        <section class="data-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Credits</h2>
+                <div class="underline"></div>
+                <div class="team-credits">
+                <div class="team-member">
+                    <span class="name">Cyril</span>
+                    <span class="task">Implementation</span>
+                </div>
+                <div class="team-member">
+                    <span class="name">Eliot</span>
+                    <span class="task">Data Analysis</span>
+                </div>
+                <div class="team-member">
+                    <span class="name">Sophie Seifert</span>
+                    <span class="task">Editing</span>
+                </div>
+                <div class="team-member">
+                    <span class="name">Thidarat K.</span>
+                    <span class="task">Writing</span>
+                </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+   <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>© 2025 Cyclists in Taipei – Created as part of a student project at National Taipei University of Technology.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize AOS animation library
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+            
+            // Loading screen animation
+            setTimeout(function() {
+                var loading = document.querySelector('.loading-screen');
+                if (loading) loading.classList.add('loaded');
+                document.body.classList.add('loaded');
+            }, 1500);
+            
+            // Mobile navigation toggle
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            
+            mobileToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Tabs functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-pane');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // Header scroll effect
+            const header = document.querySelector('.site-header');
+            let lastScrollY = 0;
+            
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                
+                // Add shadow and background when scrolled
+                if (scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // Hide/show header on scroll direction
+                if (scrollY > lastScrollY && scrollY > 200) {
+                    header.classList.add('hidden');
+                } else {
+                    header.classList.remove('hidden');
+                }
+                
+                lastScrollY = scrollY;
+            });
+        });
+    </script>
+</body>
+</html> 

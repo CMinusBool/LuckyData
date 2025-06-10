@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyclists in Taipei</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <!--link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="loading-screen">
+        <div class="logo-container">
+            <div class="logo">
+                <i class="fas fa-bicycle"></i>
+            </div>
+            <div class="loading-text">Cyclists in Taipei</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <a href="#" class="logo-link">
+                    <!--i class="fas fa-bicycle"></i-->
+                    <span>Cyclists in Taipei</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                   <li><a href="survey.html" class="nav-link">Survey Data</a></li>
+                    <li><a href="about.html" class="nav-link">About this project</a></li>
+                </ul>
+                <!--ul>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#findings" class="nav-link">Findings</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#danger-zones" class="nav-link">Hotspots</a></li>
+                    <li><a href="#data" class="nav-link">Survey Data</a></li>
+                    <li><a href="#conclusion" class="nav-link">Conclusion</a></li>
+                </ul-->
+            </nav>
+            <div class="mobile-nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fade-in">Cyclists in Taipei</h1>
+            <p class="fade-in delay-1">A data-informed approach to understanding and improving urban cycling experiences</p>
+            <!--a href="#about" class="btn primary-btn fade-in delay-2">Explore the Research</a-->
+        </div>
+        <div class="scroll-indicator">
+            <!--div class="mouse">
+                <div class="wheel"></div>
+            </div-->
+            <div>
+                <span class="scroll-arrow"></span>
+                <span class="scroll-arrow"></span>
+                <span class="scroll-arrow"></span>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Project Overview</h2>
+                <div class="underline"></div>
+                <p class="section-subheading">Cycling in Taipei is growing - but for many, it still doesn’t feel safe.
+                Let’s explore together how we can make biking in this city safer and more accessible by understanding what everyday cyclists face and what really needs to change.
+                We spent time in busy areas like Taipei Main Station to take a close look at road conditions and cyclist behavior. Then we came together to talk about the most common challenges - and safety kept coming up. By combining these personal insights with our observations and supported by data from the government, this project offers a data-informed perspective on how to improve cycling conditions in Taipei - from better infrastructure planning to raising awareness about safe riding practices.
+                </p>
+            </div>
+            <!--div class="about-container">
+                <div class="text-card" data-aos="fade-right" data-aos-delay="200">
+                    <h3>Project Overview</h3>
+                    <p>This comprehensive research examines cycling infrastructure and safety in Taipei by analyzing survey data collected from local and international cyclists. As Taipei continues to invest in bicycle infrastructure as part of its sustainable transportation strategy, our team identified a critical need to understand the actual user experience and safety concerns.</p>
+                    
+                    <p>Through a combination of detailed surveys, on-site observations, and geographic analysis, we've mapped high-risk areas and identified key challenges faced by different demographics of cyclists across the city.</p>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Geographic Focus</h4>
+                            <p>Central Taipei with emphasis on high-traffic areas and transit hubs</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Stakeholders</h4>
+                            <p>Urban planners, transportation authorities, cyclists, and application developers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-card about-image-wrapper" data-aos="fade-left" data-aos-delay="400">
+                    <div class="image-gradient"></div>
+                    <img src="../../images/taipei_cycling.jpg" alt="Cycling in Taipei" class="about-image">
+                    <div class="about-image-caption">
+                        <p>Cycling infrastructure at the intersection of urban design and mobility</p>
+                    </div>
+                </div>
+            </div-->
+        </section>
+
+        <!-- Safety Perception Section -->
+<section id="findings" class="findings-section">
+    <div class="section-header" data-aos="fade-up">
+        <h2>Safety Perception</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="safety-perception-hero">
+        <div class="safety-perception-overlay">
+            <div class="safety-perception-content">
+                <h3>How safe do cyclists feel in Taipei?</h3>
+                <p class="section-subheading">Many riders told us they feel unsafe, especially where bike lanes are missing or unclear. Our survey confirmed this: a large number of cyclists worry about traffic, road layout, and the lack of safe space. The average safety perception rating among all surveyed cyclists was:</p>
+                <div class="safety-rating-visual">
+                    <div class="safety-rating-number">3.2<span class="stat-unit">/5</span></div>
+                    <div class="safety-rating-label">Average safety perception</div>
+                </div>
+                <div class="safety-infra-gap">
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 36 36" width="160" height="160" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#eee" stroke-width="2"/>
+                            <path class="circle" stroke-dasharray="62, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--accent)" stroke-width="2"/>
+                            <text x="18" y="22" text-anchor="middle" font-size="13" fill="var(--accent)" font-family="'Racing Sans One', sans-serif">62%</text>
+                          </svg>
+                    </div>
+                    <div class="infra-gap-label">Cited "Not enough bike lanes" as their primary safety concern</div>
+                </div>
+                <a href="survey.html" class="btn primary-btn" style="margin-top:2rem;">Explore Full Survey Data</a>
+            </div>
+        </div>
+    </div>
+    <div class="risk-factors-container" data-aos="fade-up" data-aos-delay="500">
+        <h3 class="factors-title">Critical Safety Factors</h3>
+        <div class="factors-grid">
+            <div class="factor-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="factor-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h4>Speed</h4>
+                <p>The primary risk factor with high-speed riders experiencing a 72.7% crash rate compared to 9.1% for low-speed riders</p>
+            </div>
+            <div class="factor-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="factor-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h4>Bike Quality</h4>
+                <p>Satisfaction with bike functionality proved to be the strongest predictor of crash prevention</p>
+            </div>
+            <div class="factor-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="factor-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h4>Mental Workload</h4>
+                <p>Strong positive correlation between mental workload and anxiety levels during cycling</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Gallery Section -->
+        <!-- <section id="gallery" class="photos-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Field Documentation</h2>
+                <div class="underline"></div>
+                <p class="section-subheading">On-site photography documenting cycling conditions across Taipei</p>
+            </div>
+            <div class="photo-gallery">
+                <div class="photo-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="photo-overlay">
+                        <div class="photo-details">
+                            <h4>Well marked intersection</h4>
+                            <p>Dedicated cycling infrastructure providing safe transportation corridors away from traffic</p>
+                            <span class="location-tag"><i class="fas fa-map-marker-alt"></i> Taipei Main Station</span>
+                        </div>
+                    </div>
+                    <img src="../../images/bike_lane_1.jpg" alt="Bike lane in Taipei" class="gallery-image">
+                </div>
+                <div class="photo-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="photo-overlay">
+                        <div class="photo-details">
+                            <h4>Shared Urban Sidewalks</h4>
+                            <p>Not enough space, too many users and no clear rules or markings create confusion on busy public spaces</p>
+                            <span class="location-tag"><i class="fas fa-map-marker-alt"></i> Taipei Main Station</span>
+                        </div>
+                    </div>
+                    <img src="../../images/bike_lane_2.jpg" alt="Shared road with bikes" class="gallery-image">
+                </div>
+                <div class="photo-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="photo-overlay">
+                        <div class="photo-details">
+                            <h4>YouBike Rental Station</h4>
+                            <p>Public bike-sharing infrastructure serving university students and commuters</p>
+                            <span class="location-tag"><i class="fas fa-map-marker-alt"></i> Taipei Main Station</span>
+                        </div>
+                    </div>
+                    <img src="../../images/youbike_station.jpg" alt="YouBike rental station" class="gallery-image">
+                </div>
+                <div class="photo-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="photo-overlay">
+                        <div class="photo-details">
+                            <h4>High-Risk Intersection</h4>
+                            <p>Complex traffic patterns and inadequate signage create hazardous conditions for cyclists</p>
+                            <span class="location-tag"><i class="fas fa-map-marker-alt"></i> Taipei Main Station</span>
+                        </div>
+                    </div>
+                    <img src="../../images/traffic_intersection.jpg" alt="Busy traffic intersection" class="gallery-image">
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Survey Data Section -->
+        <section id="data" class="data-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Survey Data</h2>
+                <div class="underline"></div>
+                <p class="section-subheading">Explore all interactive data visualizations and detailed survey results on a dedicated page.</p>
+                <a href="survey.html" class="btn primary-btn" style="margin-top:2rem;">Go to Survey Data</a>
+            </div>
+        </section>
+
+        <!-- Danger Zones Section -->
+        <section id="danger-zones" class="danger-zones-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Accident Hotspots</h2>
+                <div class="underline"></div>
+                <p class="section-subheading">Traffic accident data reveals critical areas of concern for urban cyclists</p>
+            </div>
+            
+            <div class="hotspot-container">
+                <!-- Left panel with metrics -->
+                <div class="hotspot-metrics" data-aos="fade-right" data-aos-delay="200">
+                    <div class="metric-card">
+                        <!--div class="metric-value">78%</div-->
+                        <div class="metric-label">cycling accidents occur at major intersections</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-label">higher accident rate during evening rush hour</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-label">high-risk corridors identified from accident data in total (2024)</div>
+                    </div>
+                </div>
+                
+                <!-- map visualization -->
+                <div class="hotspot-map-wrapper" data-aos="fade-left" data-aos-delay="400">
+                    <div style="min-height:523px" id="datawrapper-vis-XX2ZT"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/XX2ZT/embed.js" charset="utf-8" data-target="#datawrapper-vis-XX2ZT"></script><noscript><img src="https://datawrapper.dwcdn.net/XX2ZT/full.png" alt="" /></noscript></div>
+                </div>
+            </div>
+            
+            <div class="hotspot-details" data-aos="fade-up" data-aos-delay="600">
+                <div class="text-card">
+                    <h3>Critical Findings</h3>
+                    <p>Our analysis of the Taipei City Road Traffic Accident data reveals distinct patterns in cycling-related incidents across the city. The highest concentration of accidents occurs at major transit hubs and commercial districts, particularly during rush hours.</p>
+                    
+                    <div class="risk-factors">
+                        <div class="risk-factor-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="risk-factor-icon">
+                                <i class="fas fa-traffic-light"></i>
+                            </div>
+                            <div class="risk-factor-content">
+                                <h4>Complex Intersections</h4>
+                                <p>Multi-directional traffic flows with inadequate cycling infrastructure create confusion and risk</p>
+                            </div>
+                        </div>
+                        
+                        <div class="risk-factor-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="risk-factor-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="risk-factor-content">
+                                <h4>Commercial Districts</h4>
+                                <p>High pedestrian activity, delivery vehicles, and limited space increase conflict potential</p>
+                            </div>
+                        </div>
+                        
+                        <div class="risk-factor-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="risk-factor-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="risk-factor-content">
+                                <h4>Peak Hours</h4>
+                                <p>Evening rush hour (5-7 PM) shows significantly higher accident rates across all districts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section id="conclusion" class="conclusion-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Conclusions &amp; Recommendations</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="conclusion-container">
+                <div class="text-card" data-aos="fade-up" data-aos-delay="200">
+                    <p class="conclusion-lead">Our research reveals a clear need for improved cycling infrastructure in Taipei, particularly in high-traffic urban areas. While Taipei has made progress with YouBike stations and riverside paths, there remains a significant gap in safe urban cycling routes.</p>
+                    
+                    <div class="recommendations-grid">
+                        <div class="recommendation-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="recommendation-number">01</div>
+                            <div class="recommendation-content">
+                                <h4>Infrastructure Expansion</h4>
+                                <p>Expand dedicated bike lane network in central districts, particularly along major commuting corridors</p>
+                            </div>
+                        </div>
+                        
+                        <div class="recommendation-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="recommendation-number">02</div>
+                            <div class="recommendation-content">
+                                <h4>Safety Signage</h4>
+                                <p>Improve visibility and signage at high-risk intersections to alert both cyclists and motorists</p>
+                            </div>
+                        </div>
+                        
+                        <div class="recommendation-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="recommendation-number">03</div>
+                            <div class="recommendation-content">
+                                <h4>Navigation Application</h4>
+                                <p>Develop a safety-focused navigation app that incorporates real-time hazard alerts and safer route recommendations</p>
+                            </div>
+                        </div>
+                        
+                        <div class="recommendation-item" data-aos="fade-up" data-aos-delay="400">
+                            <div class="recommendation-number">04</div>
+                            <div class="recommendation-content">
+                                <h4>Educational Campaigns</h4>
+                                <p>Create targeted campaigns on safe cycling practices for both locals and international residents</p>
+                            </div>
+                        </div>
+                        
+                        <div class="recommendation-item" data-aos="fade-up" data-aos-delay="500">
+                            <div class="recommendation-number">05</div>
+                            <div class="recommendation-content">
+                                <h4>Physical Barriers</h4>
+                                <p>Install physical separation between bike lanes and vehicle traffic on major roads to enhance safety</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-container" data-aos="fade-up" data-aos-delay="600">
+                        <p>These data-informed recommendations could significantly improve the cycling experience in Taipei and support the city's sustainability goals.</p>
+                        <!--a href="#" class="btn secondary-btn">Download Full Report</a-->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>© 2025 Cyclists in Taipei – Created as part of a student project at National Taipei University of Technology.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize AOS animation library
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+            
+            // Loading screen animation
+            setTimeout(function() {
+                document.querySelector('.loading-screen').classList.add('loaded');
+                document.body.classList.add('loaded');
+            }, 1500);
+            
+            // Mobile navigation toggle
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            
+            mobileToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Tabs functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-pane');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // Header scroll effect
+            const header = document.querySelector('.site-header');
+            let lastScrollY = 0;
+            
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                
+                // Add shadow and background when scrolled
+                if (scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // Hide/show header on scroll direction
+                if (scrollY > lastScrollY && scrollY > 200) {
+                    header.classList.add('hidden');
+                } else {
+                    header.classList.remove('hidden');
+                }
+                
+                lastScrollY = scrollY;
+            });
+        });
+    </script>
+</body>
+</html> 
