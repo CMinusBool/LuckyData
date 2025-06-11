@@ -1,0 +1,44 @@
+name: Copy webpage to docs
+
+# Only run on direct pushes to main
+on:
+  push:
+    branches:
+      - main
+
+# Grant write permission so git push works
+permissions:
+  contents: write
+
+jobs:
+  copy-webpage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          # Persist credentials so git push uses GITHUB_TOKEN
+          persist-credentials: true
+
+      - name: Copy webpage files to docs
+        run: |
+          rm -rf docs
+          mkdir -p docs
+          cp -r code/webpage/* docs/
+          # If you have hidden files you want to copy:
+          cp -r code/webpage/.* docs/ 2>/dev/null || true
+          # Optionally disable Jekyll if needed:
+          touch docs/.nojekyll
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Only commit if there are changes
+          git add docs
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-update docs from code/webpage"
+            git push
+          else
+            echo "No changes to docs; skipping commit."
+          fi
