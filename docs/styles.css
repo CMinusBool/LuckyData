@@ -1355,6 +1355,139 @@ section {
     margin-bottom: 0;
 }
 
+/* Yearly Injuries Section */
+.yearly-injuries-section {
+    background-color: var(--bg);
+}
+
+.injuries-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+}
+
+@media (max-width: 991px) {
+    .injuries-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.injury-chart-wrapper .chart-card {
+    height: 100%;
+}
+
+.injury-animation-wrapper {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.injury-animation-wrapper h4 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+}
+
+.injury-animation-wrapper p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.animation-placeholder {
+    position: relative;
+    height: 150px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.scene {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.scene i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+}
+
+.scene .fa-person-biking {
+    color: var(--primary);
+    left: -50px;
+    animation: bike-approaches 5s linear infinite;
+}
+
+.scene .fa-car {
+    color: var(--text-light);
+    right: -50px;
+    animation: car-approaches 5s linear infinite;
+}
+
+.scene .crash-effect {
+    font-size: 5rem;
+    color: var(--accent);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    animation: crash-anim 5s linear infinite;
+}
+
+.scene .after-crash {
+    font-size: 3.5rem;
+    color: var(--danger, #dc2626);
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: after-crash-anim 5s linear infinite;
+}
+
+@keyframes bike-approaches {
+    0% { left: -50px; transform: translateY(-50%) rotate(0deg); opacity: 1; }
+    40% { left: calc(50% - 40px); transform: translateY(-50%) rotate(0deg); opacity: 1; }
+    45% { transform: translateY(-30%) rotate(45deg); opacity: 1; }
+    46% { opacity: 0; }
+    100% { opacity: 0; left: calc(50% - 40px); }
+}
+
+@keyframes car-approaches {
+    0% { right: -50px; opacity: 1; }
+    40% { right: calc(50% - 40px); opacity: 1; }
+    45% { opacity: 1; }
+    100% { opacity: 1; right: calc(50% - 40px); }
+}
+
+@keyframes crash-anim {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    45% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    46% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    55% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+    100% { opacity: 0; }
+}
+
+@keyframes after-crash-anim {
+    0% { opacity: 0; }
+    55% { opacity: 0; }
+    60% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.animation-caption { 
+    font-size: 0.9rem; 
+    font-style: italic; 
+    color: var(--text-light); 
+    margin-bottom: 0 !important; 
+}
+
 /* Enhanced Safety Perception Styles */
 .grid-container {
     display: grid;
