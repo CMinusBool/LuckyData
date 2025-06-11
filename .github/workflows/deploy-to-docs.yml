@@ -1,4 +1,4 @@
-name: Copy website to docs
+name: Copy webpage to docs
 
 on:
   push:
@@ -6,19 +6,19 @@ on:
       - main  # or your default branch
 
 jobs:
-  copy-website:
+  copy-webpage:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Copy website files to docs
+      - name: Copy webpage files to docs
         run: |
           rm -rf docs
           mkdir -p docs
-          cp -r code/website/* docs/
-          cp -r code/website/.* docs/ 2>/dev/null || true
+          cp -r code/webpage/* docs/
+          cp -r code/webpage/.* docs/ 2>/dev/null || true
 
       - name: Commit and push changes
         run: |
@@ -26,5 +26,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add docs
-          git diff --cached --quiet || git commit -m "Update docs from code/website"
+          git diff --cached --quiet || git commit -m "Update docs from code/webpage"
           git push
