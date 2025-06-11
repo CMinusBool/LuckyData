@@ -388,7 +388,7 @@ function loadCharts(tabId = null) {
 
     // 10. Yearly Injuries Chart (line)
     if (document.getElementById('yearlyInjuriesChart')) {
-        const injuryLabels = ['97', '98', '99', '100', '101', '102', '103', '104', '105', '106', '107', '108', '109', '110', '111', '112', '113'];
+        const injuryLabels = ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
         const injuryValues = [705, 750, 895, 911, 941, 1061, 1089, 1027, 1159, 1058, 1064, 1148, 1287, 1260, 1339, 1397, 1410];
         createLineChart(
             'yearlyInjuriesChart',
