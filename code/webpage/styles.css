@@ -1420,7 +1420,7 @@ section {
 }
 
 .scene .fa-person-biking {
-    color: var(--primary);
+    color: var(--text-light);
     left: -50px;
     animation: bike-approaches 5s linear infinite;
 }
@@ -1443,7 +1443,7 @@ section {
 
 .scene .after-crash {
     font-size: 3.5rem;
-    color: var(--danger, #dc2626);
+    color: var(--accent);
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
