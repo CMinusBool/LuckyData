@@ -1,9 +1,10 @@
 :root {
     --primary: #2c5282;
     --primary-light: #4a69bd;
-    --primary-dark: #1e3a8a;
+    --primary-dark: #293747;
     --primary-gradient: linear-gradient(135deg, var(--primary-light), var(--primary));
-    --accent: #f59e0b;
+    /* --accent: #CA272C; */
+    --accent: #F59E0B;
     --accent-light: #fbbf24;
     --accent-dark: #d97706;
     --text: #2d3748;
@@ -531,7 +532,7 @@ section {
 .underline {
     width: 70px;
     height: 3px;
-    background: var(--primary-gradient);
+    background: var(--accent);
     margin: 0 auto 20px;
     border-radius: 2px;
 }
@@ -943,7 +944,7 @@ section {
 .recommendation-icon {
     width: 50px;
     height: 50px;
-    background: var(--primary-light);
+    background: var(--primary-dark);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -971,7 +972,7 @@ section {
 
 /* Footer */
 .site-footer {
-    background-color: var(--primary-dark);
+    background-color: #293747;
     color: white;
     padding: 80px 0 30px;
     margin-top: 100px;
@@ -1609,7 +1610,7 @@ section {
 .factor-icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    background: var(--accent);
     color: white;
     border-radius: 50%;
     margin: 0 auto 20px;
