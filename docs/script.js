@@ -195,6 +195,60 @@ function createDoughnutChart(canvasId, labels, data, label) {
     });
 }
 
+// Enhanced line chart
+function createLineChart(canvasId, labels, data, label) {
+    const ctx = document.getElementById(canvasId).getContext('2d');
+    if (chartInstances[canvasId]) {
+        chartInstances[canvasId].destroy();
+    }
+    chartInstances[canvasId] = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: label,
+                data: data,
+                backgroundColor: `${colors.accent}33`, // semi-transparent fill
+                borderColor: colors.accent,
+                borderWidth: 3,
+                pointBackgroundColor: colors.accent,
+                pointRadius: 5,
+                pointHoverRadius: 8,
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            ...chartOptions,
+            scales: {
+                y: {
+                    beginAtZero: false, // data doesn't start at 0
+                    grid: {
+                        color: 'rgba(200, 200, 200, 0.2)'
+                    },
+                    ticks: {
+                        font: {
+                            family: "'Montserrat', sans-serif",
+                            size: 11
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            family: "'Montserrat', sans-serif",
+                            size: 11
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
 // Radar chart function (kept for potential future use)
 function createRadarChart(canvasId, labels, data, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
@@ -329,6 +383,18 @@ function loadCharts(tabId = null) {
             originLabels,
             originValues,
             'Origin of respondents'
+        );
+    }
+
+    // 10. Yearly Injuries Chart (line)
+    if (document.getElementById('yearlyInjuriesChart')) {
+        const injuryLabels = ['97', '98', '99', '100', '101', '102', '103', '104', '105', '106', '107', '108', '109', '110', '111', '112', '113'];
+        const injuryValues = [705, 750, 895, 911, 941, 1061, 1089, 1027, 1159, 1058, 1064, 1148, 1287, 1260, 1339, 1397, 1410];
+        createLineChart(
+            'yearlyInjuriesChart',
+            injuryLabels,
+            injuryValues,
+            'Number of Injured Cyclists'
         );
     }
 }
