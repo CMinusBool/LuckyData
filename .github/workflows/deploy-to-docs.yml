@@ -1,0 +1,30 @@
+name: Copy website to docs
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  copy-website:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Copy website files to docs
+        run: |
+          rm -rf docs
+          mkdir -p docs
+          cp -r code/website/* docs/
+          cp -r code/website/.* docs/ 2>/dev/null || true
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add docs
+          git diff --cached --quiet || git commit -m "Update docs from code/website"
+          git push
